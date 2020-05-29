@@ -77,6 +77,7 @@ def MembersPost():
         "hello": "world",
         "family": members
     }
+   # members.append(newMember)
     newMember = jackson_family.add_member(jackson_family)
     return jsonify(member), 200
 
