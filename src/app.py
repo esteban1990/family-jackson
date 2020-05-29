@@ -41,7 +41,7 @@ def getAllMembers():
 @app.route('/members/<init:member_id>', methods=['GET'])
 def getOneMember():
 
-    members = jackson_family.query.get_member(id)
+    member = jackson_family.query.get_member(id)
     response_body = {
         "hello": "world",
         "family": members
@@ -55,6 +55,16 @@ def memberPut():
 
     # this is how you can use the Family datastructure by calling its methods
     members = jackson_family.get_all_members()
+    member = jackson_family.query.get(id)
+    
+    jackson_family._name = request.json.get("name")
+    jackson_family._ = request.json.get("lastname")
+    jackson_family._name = request.json.get("age")
+    
+    db.session.commit()
+    return jsonify(member.serialize()),201
+   
+    
     response_body = {
         "hello": "world",
         "family": members
