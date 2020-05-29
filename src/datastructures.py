@@ -26,25 +26,28 @@ class FamilyStructure:
         return randint(0, 99999999)
 
     def add_member(self, member):
+        member = {
+                "id":generateId(),
+                 "name": member._name,
+                "lastname": memeber.last_name,
+                "age": member.age
+        }
+        
         self._members.append(member)
-        # fill this method and update the return
-        return None
+        return(member)
 
     def delete_member(self, id):
         # fill this method and update the return
-        for position in range(len(self._members)):
-            if self._members[position]["id"] == id:
-                self._members.pop(position)
-                return None
+        member = self.get_member(id)
+        member.remove()
+                
         
 
     def get_member(self, id):
-        # fill this method and update the return
-        for m in self._members:
-            if m["id"] == int(id):
-                return m
+        member = list(filter(lambda item: item["id"]==id, self._members))
+        return (member)
 
-        return None
+        
 
     # this method is done, it returns a list with all the family members
     def get_all_members(self):
