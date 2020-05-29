@@ -36,7 +36,7 @@ def getAllMembers():
     }
 
 
-    return jsonify(response_body), 200
+    return jsonify(members), 200
 
 @app.route('/members/<init:member_id>', methods=['GET'])
 def getOneMember():
@@ -48,7 +48,7 @@ def getOneMember():
     }
 
 
-    return jsonify(response_body), 200
+    return jsonify(member), 200
 
 @app.route('/members', methods=['PUT'])
 def memberPut():
