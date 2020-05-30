@@ -35,7 +35,7 @@ def getAllMembers():
 @app.route('/members/<init:member_id>', methods=['GET'])
 def getOneMember(member_id):
     member = jackson_family.query.get_member(id)
-    return jsonify(members), 200
+    return jsonify(member), 200
 
 @app.route('/members', methods=['PUT'])
 def memberPut():
@@ -64,19 +64,10 @@ def memberPut():
 def MembersPost():
 
     members = jackson_family.get_all_members()
-    newMember = jackson_family._name= request.json.get("name")
-                jackson_family.last_name =  request.json.get("lastname")
-                jackson_family._age = request.json.get("age")
-     
-    
-
-    response_body = {
-        "hello": "world",
-        "family": members
-    }
-   # members.append(newMember)
+    newMember = json.loads(request.POST[data])
+    # members.append(newMember)
     newMember = jackson_family.add_member(jackson_family)
-    return jsonify(member), 200
+    return jsonify(members), 200
 
 
 @app.route('/members', methods=["DELETE"])
