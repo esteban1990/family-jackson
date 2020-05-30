@@ -25,7 +25,7 @@ def handle_invalid_usage(error):
 def sitemap():
     return generate_sitemap(app)
 
-@app.route('/member/<int_member_id>', methods=['GET'])
+@app.route('/members, methods=['GET'])
 def getAllMembers():
 
     # this is how you can use the Family datastructure by calling its methods
@@ -34,40 +34,18 @@ def getAllMembers():
 
 @app.route('/members/<init:member_id>', methods=['GET'])
 def getOneMember(member_id):
-    member = jackson_family.query.get_member(id)
-    return jsonify(member), 200
+    members = jackson_family.query.get_member(id)
+    return jsonify(members),400
 
-@app.route('/members', methods=['PUT'])
-def memberPut():
-
-    # this is how you can use the Family datastructure by calling its methods
-    members = jackson_family.get_all_members()
-    member = jackson_family.query.get(id)
-    
-    jackson_family._name = request.json.get("name")
-    jackson_family._ = request.json.get("lastname")
-    jackson_family._name = request.json.get("age")
-    
-    db.session.commit()
-    return jsonify(member.serialize()),201
-   
-    
-    response_body = {
-        "hello": "world",
-        "family": members
-    }
-
-
-    return jsonify(response_body), 200
 
 @app.route('/member', methods=['POST'])
 def MembersPost():
 
     members = jackson_family.get_all_members()
-    newMember = json.loads(request.POST[data])
-    # members.append(newMember)
-    newMember = jackson_family.add_member(jackson_family)
-    return jsonify(members), 200
+    newMember = json.loads(request.data)
+    members.append(newMember)
+   # newMember = jackson_family.add_member(jackson_family)
+    return jsonify(members),
 
 
 @app.route('/members', methods=["DELETE"])
@@ -75,11 +53,7 @@ def membersDelete():
 
     # this is how you can use the Family datastructure by calling its methods
     member = jackson_family.delete_member(id,members)
-    response_body = {
-        "hello": "world",
-        "family": members
-    }
-
+           
     db.session.delete_member(member)
     return jsonify({"msge": "member has been deleted"}), 200
 
