@@ -49,13 +49,11 @@ def MembersPost():
 
 
 @app.route('/members', methods=["DELETE"])
-def membersDelete():
-
-    # this is how you can use the Family datastructure by calling its methods
-    member = jackson_family.delete_member(id,members)
+def membersDelete(member_id):
+           members = jackson_family.get.all_members()
+           members.pop(member.id)
            
-    db.session.delete_member(member)
-    return jsonify({"msge": "member has been deleted"}), 200
+           return jsonify(members),200
 
 # this only runs if `$ python src/app.py` is executed
 if __name__ == '__main__':
